@@ -52,22 +52,29 @@ function generateTitleLinks(){
 
     const titleList = document.querySelector(optTitleListSelector);
     titleList.innerHTML = '';
+    console.log(optTitleListSelector);
 
     /* for each article */
 
     const articles = document.querySelectorAll(optArticleSelector);
     console.log('articles', articles);
+    console.log(articles);
 
-    /* get the article id */
+    for (const article of articles){
 
-    /* find the title element */
+        /* [ERROR IN CONSOLE LOG] get the article id */
 
-    /* get the title from the title element */
+        const articleId = article.getAttribute('id');
+        console.log(articleId);
 
-    /* create HTML of the link */
+        /* find the title element */
 
-    /* insert link into titleList */
+        /* get the title from the title element */
 
+        /* create HTML of the link */
+
+        /* insert link into titleList */
+    }
 }
 
 generateTitleLinks();
