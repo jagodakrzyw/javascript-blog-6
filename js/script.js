@@ -52,13 +52,10 @@ function generateTitleLinks(){
 
     const titleList = document.querySelector(optTitleListSelector);
     titleList.innerHTML = '';
-    console.log(optTitleListSelector);
 
     /* [DONE] find all the articles and save them to variable: articles */
 
     const articles = document.querySelectorAll(optArticleSelector);
-    console.log('articles', articles);
-    console.log(articles);
 
     let html = '';
 
@@ -67,23 +64,19 @@ function generateTitleLinks(){
         /* [DONE] get the article id */
 
         const articleId = article.getAttribute('id');
-        console.log(articleId);
 
         /* [DONE] find the title element */
         /* [DONE] get the title from the title element */
 
         const articleTitle = article.querySelector(optTitleSelector).innerHTML;
-        console.log(articleTitle);
 
         /* [DONE] create HTML of the link */
 
         const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-        console.log(linkHTML);
 
         /* [DONE] insert link into titleList */
 
         html = html + linkHTML;
-        console.log(html);
     }
 
     titleList.innerHTML = html;
