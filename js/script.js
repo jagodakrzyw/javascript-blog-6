@@ -125,7 +125,6 @@ function generateTags(){
       generate HTML of the link */
 
       const linkHTML = '<li><a href="#tag-'+ tag + '"><span>'+ tag +'</span></a></li>';
-      console.log(linkHTML);
 
       /* [DONE] add generated code to html variable */
 
@@ -145,13 +144,21 @@ function generateTags(){
 generateTags();
 
 function tagClickHandler(event){
-  /* prevent default action for this event */
+  /* [DONE] prevent default action for this event */
 
-  /* make new constant named "clickedElement" and give it the value of "this" */
+  event.preventDefault();
 
-  /* make a new constant "href" and read the attribute "href" of the clicked element */
+  /* [DONE] make new constant named "clickedElement" and give it the value of "this" */
 
-  /* make a new constant "tag" and extract tag from the "href" constant */
+  const clickedElement = this;
+
+  /* [DONE] make a new constant "href" and read the attribute "href" of the clicked element */
+
+  const href = clickedElement.getAttribute('href');
+
+  /* [DONE] make a new constant "tag" and extract tag from the "href" constant */
+
+  const tag = href.replace('#tag-', '');
 
   /* find all tag links with class active */
 
