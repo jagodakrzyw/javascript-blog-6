@@ -44,8 +44,8 @@ const titleClickHandler = function(event){
 
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles';
-  optArticleTagsSelector = '.post-tags .list'; /* ERROR IN CONSOL 'Uncaught ReferenceError' */
+  optTitleListSelector = '.titles',
+  optArticleTagsSelector = '.post-tags .list';
 
 function generateTitleLinks(){
 
@@ -96,7 +96,6 @@ function generateTags(){
   /* [DONE] find all articles */
 
   const articles = document.querySelectorAll(optArticleSelector);
-  console.log(articles);
 
   /* [DONE] START LOOP: for every article: */
 
@@ -105,16 +104,18 @@ function generateTags(){
     /* [DONE] find tags wrapper */
 
     const articleTagsWrapper = article.querySelector(optArticleTagsSelector);
-    console.log(articleTagsWrapper);
 
     /* [DONE] make html variable with empty string */
 
     let html = '';
-    console.log(html);
 
-    /* get tags from data-tags attribute */
+    /* [DONE] get tags from data-tags attribute */
+
+    const articleTags = article.getAttribute('data-tags');
 
     /* split tags into array */
+
+    
 
     /* START LOOP: for each tag */
 
