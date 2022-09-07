@@ -123,7 +123,7 @@ function generateTags(){
 
       /* [DONE] generate HTML of the link */
 
-      const linkHTML = '<li><a href="#tag-' + tag + '"><span>'+ tag +'</span></a></li>&nbsp;';
+      const linkHTML = '<li><a href="#tag-' + tag + '"><span>'+ tag +'</span></a></li>';
 
       /* [DONE] add generated code to html variable */
 
@@ -195,13 +195,21 @@ function tagClickHandler(event){
 }
 
 function addClickListenersToTags(){
-  /* find all links to tags */
 
-  /* START LOOP: for each link */
+  /* [DONE] find all links to tags */
 
-    /* add tagClickHandler as event listener for that link */
+  const tagLinks = document.querySelectorAll('a[href^="#tag-"]');
 
-  /* END LOOP: for each link */
+  /* [DONE] START LOOP: for each link */
+
+  for(let tagLink of tagLinks){
+
+    /* [DONE] add tagClickHandler as event listener for that link */
+
+    tagLink.addEventListener('click', tagClickHandler);
+
+  /* [DONE] END LOOP: for each link */
+  }
 }
 
 addClickListenersToTags();
