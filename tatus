@@ -1,0 +1,29 @@
+* [33m6f50d2a[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Prepare generateAuthors script
+* [33mb29d561[m Add function addClickListenersToTags
+* [33mc31031c[m Add function generateTitleLinks
+* [33ma291464[m Finish function tagClickHandler
+* [33md56ae3c[m Add const clickedElements, href and tag to function tagClickHandler
+* [33mb12d844[m Add function tagClickHandler script
+* [33mcc12b7f[m Finish and close function generateTags, link needs fixing
+* [33m31fd433[m Add a start loop for each tag
+* [33mc7d9ead[m Fix bug with 48 line, add const articleTags
+* [33m76ead70[m Done make html variable with empty string, error 48 line
+* [33m7059d63[m Prepare script for loop
+* [33m940a37c[m Install EditorConfig and StyleLint and update task runner
+* [33mbfeeb35[m Install ESLint and update taskrunner
+* [33medf090e[m Finish loop and remove console.log
+* [33me3be3af[m Add const for creating HTMl of the link
+* [33m551cff9[m Add const to get the title from the tittle element
+* [33md98b5f1[m Add const for article id
+* [33m130e046[m Add const for each article
+* [33mab90074[m Remove contents of titleList
+* [33m00027dd[m Remove all console.logs
+* [33md303e9a[m Add class 'active' to the correct artickle
+* [33mdc4fc0e[m Add const for finfin the correct article
+* [33m21f073b[m Add const for href attribute
+* [33m378a494[m Add class 'active' to the clicked link
+* [33m526f108[m Remove class 'active' from all articles
+* [33mdc2fc93[m Add basic function structure to script.js
+* [33m1ded77f[m Add scss content
+* [33mbbda4d9[m Add html content
+* [33m09ed84b[m Init project
