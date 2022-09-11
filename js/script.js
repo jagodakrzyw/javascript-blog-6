@@ -47,7 +47,7 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
   optArticleAuthorSelector = '.post-author',
-  optTagListSelector = '.tags.list';
+  optTagsListSelector = '.tags.list';
 
 function generateTitleLinks(customSelector = ''){
 
@@ -335,23 +335,41 @@ function generateTags(){
 
   let allTags = [];
 
-  /* find all articles */
+  /* [DONE] find all articles */
 
-  /* START LOOP: for every article: */
+  const articles = document.querySelectorAll(optArticleSelector);
 
-    /* find tags wrapper */
+  /* [DONE] START LOOP: for every article: */
 
-    /* make html variable with empty string */
+  for(let article of articles){
 
-    /* get tags from data-tags attribute */
+    /* [DONE] find tags wrapper */
 
-    /* split tags into array */
+    const articleTagsWrapper = article.querySelector(optArticleTagsSelector);
 
-    /* START LOOP: for each tag */
+    /* [DONE] make html variable with empty string */
 
-      /* generate HTML of the link */
+    let html = '';
 
-      /* add generated code to html variable */
+    /* [DONE] get tags from data-tags attribute */
+
+    const articleTags = article.getAttribute('data-tags');
+
+    /* [DONE] split tags into array */
+
+    const articleTagsArray = articleTags.split(' ');
+
+    /* [DONE] START LOOP: for each tag */
+
+    for(let tag of articleTagsArray){
+
+      /* [DONE] generate HTML of the link */
+
+      const linkHTML = '<li><a href="#tag-' + tag + '"><span>'+ tag +'</span></a></li>';
+
+      /* [DONE] add generated code to html variable */
+
+      html = html + linkHTML;
 
       /* [NEW] check if this link is NOT already in allTags */
 
@@ -363,11 +381,15 @@ function generateTags(){
 
       }
 
-    /* END LOOP: for each tag */
+    /* [DONE] END LOOP: for each tag */
+    }
 
-    /* insert HTML of all the links into the tags wrapper */
+    /* [DONE] insert HTML of all the links into the tags wrapper */
 
-  /* END LOOP: for every article: */
+    articleTagsWrapper.innerHTML = html;
+
+  /* [DONE] END LOOP: for every article: */
+  }
 
   /* [NEW] find list of tags in right column */
 
