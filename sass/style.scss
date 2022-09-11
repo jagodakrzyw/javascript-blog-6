@@ -119,3 +119,30 @@ body {
     margin: 0 10px 0 0;
   }
 }
+
+/* Tags */
+
+.tags.list {
+  li {
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 20px;
+    font-style: italic;
+  }
+}
+
+.tag-size-1 {
+  font-size: 90%;
+}
+
+.tag-size-2 {
+  font-size: 110%;
+}
+
+.tag-size-3 {
+  font-size: 130%;
+}
+
+.tag-size-5 {
+  font-size: 150%;
+}
