@@ -233,18 +233,98 @@ function generateAuthors() {
 
     let html = '';
 
-    /* [IN PROGRESS] get Author from data-author attribute */
+    /* [DONE] get Author from data-author attribute */
 
     const author = article.getAttribute('data-author');
 
-    /* generate HTML of the link */
+    /* [DONE] generate HTML of the link */
 
-    /* add generated code to html variable */
+    const linkHTML = '<a href="#author-' + author + '"><span>' + author + '</span></a>';
 
-   /* insert HTML of all the links into the authors wrapper */
+    /* [DONE] add generated code to html variable */
 
-    /* END LOOP: for every article: */
+    html = html + linkHTML;
+
+    /* [DONE] insert HTML of all the links into the authors wrapper */
+
+    authorWrapper.innerHTML = html;
+
+    /* [DONE] END LOOP: for every article: */
   }
 }
 
 generateAuthors();
+
+function authorClickHandler(event){
+
+  /* [DONE] prevent default action for this event */
+
+  event.preventDefault();
+
+  /* [DONE] make new constant named "clickedElement" and give it the value of "this" */
+
+  const clickedElement = this;
+
+  /* [DONE] make a new constant "href" and read the attribute "href" of the clicked element */
+
+  const href = clickedElement.getAttribute('href');
+
+  /* [DONE] make a new constant "author" and extract author from the "href" constant */
+
+  const author = href.replace('#author-', '');
+
+  /* [DONE] find all tag links with class active */
+
+  const activeAuthors = document.querySelectorAll('a.active[href^="#author-"]');
+
+  /* [DONE] START LOOP: for each active tag link */
+
+  for (let activeAuthor of activeAuthors) {
+
+    /* [DONE] remove class active */
+
+    activeAuthor.classList.remove('active');
+
+  /* [DONE] END LOOP: for each active tag link */
+  }
+
+  /* [DONE] find all tag links with "href" attribute equal to the "href" constant */
+
+  const authorLinks = document.querySelectorAll('a[href="' + href + '"]');
+
+  /* [DONE] START LOOP: for each found tag link */
+
+  for (let authorLink of authorLinks) {
+
+    /* [DONE] add class active */
+
+    authorLink.classList.add('active');
+
+  /* [DONE] END LOOP: for each found tag link */
+  }
+  /* [DONE] execute function "generateTitleLinks" with article selector as argument */
+
+  generateTitleLinks('[data-author="' + author + '"]');
+
+}
+
+function addClickListenersToAuthors(){
+
+  /* [DONE]  find all links to tags */
+
+  const authorLinks = document.querySelectorAll('a[href^="#author-"]');
+
+  /* [DONE]  START LOOP: for each link */
+
+  for(let authorLink of authorLinks){
+
+    /* [DONE]  add tagClickHandler as event listener for that link */
+
+    authorLink.addEventListener('click', authorClickHandler);
+
+  /* [DONE]  END LOOP: for each link */
+  }
+}
+
+addClickListenersToAuthors();
+
