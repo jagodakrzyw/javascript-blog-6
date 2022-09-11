@@ -1,10 +1,5 @@
 'use strict';
 
-/* document.getElementById('test-button').addEventListener('click', function(){
-  const links = document.querySelectorAll('.titles a');
-  console.log('links:', links);
-}); */
-
 const titleClickHandler = function(event){
   event.preventDefault();
   const clickedElement = this;
@@ -48,10 +43,9 @@ const optTitleListSelector = '.titles';
 const optArticleTagsSelector = '.post-tags .list';
 const optArticleAuthorSelector = '.post-author';
 const optTagsListSelector = '.tags.list';
-const optCloudClassCount = '5';
+const optCloudClassCount = '4';
 const optCloudClassPrefix = 'tag-size-';
-const optAuthorsListSelector = '.authors.list';
-
+const optAuthorListSelector = '.authors.list';
 
 function generateTitleLinks(customSelector = ''){
 
@@ -287,13 +281,13 @@ function generateAuthors() {
 
   const articles = document.querySelectorAll(optArticleSelector);
 
-  /* [DONE] START LOOP: for every article */
+  /* [DONE] START LOOP: for every article: */
 
   for (let article of articles) {
 
     /* [DONE] find author wrapper */
 
-    const authorWrapper = article.querySelector(optArticleAuthorSelector);
+    const authorsWrapper = article.querySelector(optArticleAuthorSelector);
 
     /* [DONE] make html variable with empty string */
 
@@ -301,24 +295,23 @@ function generateAuthors() {
 
     /* [DONE] get Author from data-author attribute */
 
-    const author = article.getAttribute('data-author');
+    const articleAuthor = article.getAttribute('data-author');
 
     /* [DONE] generate HTML of the link */
 
-    const linkHTML = '<a href="#author-' + author + '"><span>' + author + '</span></a>';
+    const linkHTML = `<a href="#author-${articleAuthor}">${articleAuthor}</a>`;
 
     /* [DONE] add generated code to html variable */
 
-    html = html + linkHTML;
+    html += linkHTML;
 
     /* [DONE] insert HTML of all the links into the authors wrapper */
 
-    authorWrapper.innerHTML = html;
+    authorsWrapper.innerHTML = html;
 
     /* [DONE] END LOOP: for every article: */
   }
 }
-
 generateAuthors();
 
 function authorClickHandler(event){
