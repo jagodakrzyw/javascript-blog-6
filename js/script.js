@@ -45,7 +45,7 @@ const optArticleAuthorSelector = '.post-author';
 const optTagsListSelector = '.tags.list';
 const optCloudClassCount = '4';
 const optCloudClassPrefix = 'tag-size-';
-const optAuthorListSelector = '.authors.list';
+const optAuthorsListSelector = '.authors.list';
 
 function generateTitleLinks(customSelector = ''){
 
@@ -277,6 +277,10 @@ addClickListenersToTags();
 
 function generateAuthors() {
 
+  /* [NEW] create a new variable allAuthors with an empty array */
+
+  let allAuthors = {};
+
   /* [DONE] find all articles */
 
   const articles = document.querySelectorAll(optArticleSelector);
@@ -287,13 +291,13 @@ function generateAuthors() {
 
     /* [DONE] find author wrapper */
 
-    const authorsWrapper = article.querySelector(optArticleAuthorSelector);
+    const authorWrapper = article.querySelector(optArticleAuthorSelector);
 
     /* [DONE] make html variable with empty string */
 
     let html = '';
 
-    /* [DONE] get Author from data-author attribute */
+    /* [DONE] get author from data-author attribute */
 
     const articleAuthor = article.getAttribute('data-author');
 
@@ -305,12 +309,47 @@ function generateAuthors() {
 
     html += linkHTML;
 
+    /* [NEW] check if this link is NOT already in allAuthors */
+
+    if (!allAuthors[articleAuthor]){
+      /* [NEW] add author to allAuthors object */
+
+      allAuthors[articleAuthor] = 1;
+    } else {
+      allAuthors[articleAuthor]++;
+    }
+
     /* [DONE] insert HTML of all the links into the authors wrapper */
 
-    authorsWrapper.innerHTML = html;
+    authorWrapper.innerHTML = html;
 
     /* [DONE] END LOOP: for every article: */
   }
+
+  /* [NEW] find list of authors in right column */
+
+  const authorsList = document.querySelector(optAuthorsListSelector);
+
+  /* [NEW] creat variable for all links HTML code */
+
+  let allAuthorsHTML = ' ';
+
+  /* [NEW] START LOOP: for each tag in allAuthors */
+
+  for (let author in allAuthors){
+
+    /* [NEW] generate code of a link and add it to allAuthorsHTML */
+
+    allAuthorsHTML += `<li><a href="#author-${author}" "${allAuthors[author]}"> ${author} (${allAuthors[author]})</a></li>`;
+
+    /* [NEW] END LOOP: for each tag in allAuthors */
+  }
+
+  /* [NEW] add HTML from allAuthorsHTML to AuthorsList */
+
+  authorsList.innerHTML = allAuthorsHTML;
+  console.log('alAuthorsHTML:', allAuthorsHTML);
+
 }
 
 generateAuthors();
