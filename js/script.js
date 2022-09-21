@@ -81,15 +81,15 @@ function generateTitleLinks(customSelector = ''){
   }
 
   titleList.innerHTML = html;
+
+  const links = document.querySelectorAll('.titles a');
+
+  for(let link of links){
+    link.addEventListener('click', titleClickHandler);
+  }
 }
 
 generateTitleLinks();
-
-const links = document.querySelectorAll('.titles a');
-
-for(let link of links){
-  link.addEventListener('click', titleClickHandler);
-}
 
 const calculateTagsParams = function(tags) {
   const params = {
@@ -312,6 +312,7 @@ function generateAuthors() {
     /* [DONE] END LOOP: for every article: */
   }
 }
+
 generateAuthors();
 
 function authorClickHandler(event){
