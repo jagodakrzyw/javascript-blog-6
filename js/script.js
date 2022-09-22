@@ -1,3 +1,9 @@
+const templates = {
+  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
+  articleTag: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
+  articleAuthor: Handlebars.compile(document.querySelector('#template-author-link').innerHTML)
+};
+
 'use strict';
 
 const titleClickHandler = function(event){
@@ -73,7 +79,8 @@ function generateTitleLinks(customSelector = ''){
 
     /* [DONE] create HTML of the link */
 
-    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+    const linkHTMLData = {id: articleId, title: articleTitle};
+    const linkHTML = templates.articleLink(linkHTMLData);
 
     /* [DONE] insert link into titleList */
 
@@ -148,7 +155,9 @@ function generateTags(){
 
       /* [DONE] generate HTML of the link */
 
-      const linkHTML = '<li><a href="#tag-' + tag + '"><span>'+ tag +'</span></a></li>';
+      // const linkHTML = '<li><a href="#tag-' + tag + '"><span>'+ tag +'</span></a></li>';
+      const linkHTMLData = {tag: tag};
+      const linkHTML = templates.articleTag(linkHTMLData);
 
       /* [DONE] add generated code to html variable */
 
@@ -303,7 +312,8 @@ function generateAuthors() {
 
     /* [DONE] generate HTML of the link */
 
-    const linkHTML = `<a href="#author-${articleAuthor}">${articleAuthor}</a>`;
+    const linkHTMLData = {author: articleAuthor};
+    const linkHTML = templates.articleAuthor(linkHTMLData);
 
     /* [DONE] add generated code to html variable */
 
@@ -312,6 +322,7 @@ function generateAuthors() {
     /* [NEW] check if this link is NOT already in allAuthors */
 
     if (!allAuthors[articleAuthor]){
+
       /* [NEW] add author to allAuthors object */
 
       allAuthors[articleAuthor] = 1;
@@ -334,7 +345,7 @@ function generateAuthors() {
 
   let allAuthorsHTML = ' ';
 
-  /* [NEW] START LOOP: for each tag in allAuthors */
+  /* [NEW] START LOOP: for each author in allAuthors */
 
   for (let author in allAuthors){
 
@@ -342,13 +353,12 @@ function generateAuthors() {
 
     allAuthorsHTML += `<li><a href="#author-${author}" "${allAuthors[author]}"> ${author} (${allAuthors[author]})</a></li>`;
 
-    /* [NEW] END LOOP: for each tag in allAuthors */
+    /* [NEW] END LOOP: for each author in allAuthors */
   }
 
   /* [NEW] add HTML from allAuthorsHTML to AuthorsList */
 
   authorsList.innerHTML = allAuthorsHTML;
-  console.log('alAuthorsHTML:', allAuthorsHTML);
 
 }
 
